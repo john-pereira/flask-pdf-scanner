@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../static/style.css">
+    <link rel="stylesheet" href="../static/bootstrap.css">
+
+    <title>Document</title>
+</head>
+<body>
+    <section id="content">
+        <div class="container">
+            <div class="title row">
+                <a href="{{ url_for('index') }}">
+                    <h1 class="h1-title text-center">Resume Scanner</h1>
+                </a>
+            </div>
+            <form method="POST" action="" class="job-form mb-4 row" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="first_name">First Name:</label>
+                    <input class="form-control" type="text" name="first_name" id="first_name">
+                </div>
+                <div class="form-group">
+                    <label for="last_name">Last Name:</label>
+                    <input class="form-control" type="text" name="last_name" id="last_name">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input class="form-control" type="email" name="email" id="email">
+                </div>
+                <div class="form-group">
+                    <label for="resume">Resume (PDF only):</label>
+                    <input class="form-control" type="file" name="resume" id="resume" accept=".pdf">
+                </div>
+                <div class="form__button">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+                {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                <div class="alert alert-success">
+                    {% for message in messages %}
+                        {{ message }}
+                    {% endfor %}
+                </div>
+                {% endif %}
+                {% endwith %}
+            </form>
+        </div>
+    </section>
+</body>
+</html>
